@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f3f4f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .container{
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            text-align: center;
+            width: 300px;
+        }
+        input{
+            padding: 10px;
+            width: 80%;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        button{
+            padding: 10px 20px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover{
+            background-color: #0056b3;
+        }
+        .result{
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+         <h2>Grade Calculator</h2>
+         <input type="number" id="marks" placeholder="Enter marks(0-100)">
+         <br> <br>
+         <button onclick="grade()">Get Grade</button>
+         <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function grade()
+        {
+            var marks=document.getElementById("marks").value;
+            var result=document.getElementById("result");
+
+            if(marks===" "){
+                result.innerHTML="Please enter marks!!";
+                result.style.color="red";
+                return;
+            }
+            marks = Number(marks);
+
+            var gradeText = " ";
+            if(marks>=90 && marks<=100){
+                gradeText = "A";
+                result.style.color="green";
+            }else if(marks>=75 && marks<90){
+                gradeText="B";
+                result.style.color="blue";
+            } else if (marks>=50 && marks<75){
+                gradeText="c";
+                result.style.color="orange";
+            } else if (marks<50 && marks>=0){
+                gradeText="fail";
+                result.style.color="red";
+            }else {
+                gradeText = "Invalid Marks! Enter between 0-100.";
+                result.style.color="red";
+            }
+            result.innerHTML= "Grade:"+"{" + gradeText+ "}";
+        }
+        
+    </script>
+</body>
+</html>
